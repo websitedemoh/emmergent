@@ -1,11 +1,33 @@
 // Mock data for Delta Airlines clone
 
 export const navLinks = [
-  { label: "BOOK", hasDropdown: true, items: ["Flights", "Cars", "Hotels", "Vacation Packages", "Cruises", "Activities", "Flight + Hotel"] },
-  { label: "MY TRIPS", hasDropdown: false },
-  { label: "CHECK IN", hasDropdown: false },
-  { label: "FLIGHT STATUS", hasDropdown: false },
-  { label: "SKYMILES", hasDropdown: true, items: ["Overview", "Join SkyMiles", "Medallion Status", "How to Earn Miles", "How to Use Miles"] },
+  {
+    label: "BOOK",
+    hasDropdown: true,
+    items: [
+      { name: "Flights", href: "/book/flights" },
+      { name: "Cars", href: "/book/cars" },
+      { name: "Hotels", href: "/book/hotels" },
+      { name: "Vacation Packages", href: "/book/vacation-packages" },
+      { name: "Cruises", href: "/book/cruises" },
+      { name: "Activities", href: "/book/activities" },
+      { name: "Flight + Hotel", href: "/book/flight-hotel" },
+    ],
+  },
+  { label: "MY TRIPS", hasDropdown: false, href: "/my-trips" },
+  { label: "CHECK IN", hasDropdown: false, href: "/check-in" },
+  { label: "FLIGHT STATUS", hasDropdown: false, href: "/flight-status" },
+  {
+    label: "SKYMILES",
+    hasDropdown: true,
+    items: [
+      { name: "Overview", href: "/skymiles/overview" },
+      { name: "Join SkyMiles", href: "/skymiles/join" },
+      { name: "Medallion Status", href: "/skymiles/medallion-status" },
+      { name: "How to Earn Miles", href: "/skymiles/earn-miles" },
+      { name: "How to Use Miles", href: "/skymiles/use-miles" },
+    ],
+  },
 ];
 
 export const topUtilityLinks = [
