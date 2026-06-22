@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Plane, BedDouble, Car, MapPin, PackageOpen, Ship, ArrowRightLeft, Calendar as CalendarIcon, Users, ChevronDown, Search } from "lucide-react";
+import { Plane, BedDouble, Car, MapPin, PackageOpen, Ship, ArrowRightLeft, Calendar as CalendarIcon, Users, Search } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
@@ -21,9 +21,9 @@ const AirportSelect = ({ label, value, onChange, exclude }) => {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <button className="w-full text-left px-4 py-3 border border-gray-300 rounded-md hover:border-[#003366] transition-colors bg-white">
-          <div className="text-[11px] tracking-wider text-gray-500 font-semibold uppercase">{label}</div>
-          <div className="text-[15px] font-semibold text-[#1a1a1a] mt-0.5 truncate">
+        <button className="w-full text-left px-4 py-3 border border-gray-300 rounded-sm hover:border-[#0a2240] focus:border-[#0a2240] transition-colors bg-white">
+          <div className="text-[11px] tracking-[0.12em] text-gray-600 font-semibold uppercase">{label}</div>
+          <div className="text-[15px] font-bold text-[#0a2240] mt-0.5 truncate">
             {value ? `${value.code} · ${value.city}` : "Select airport"}
           </div>
         </button>
@@ -41,7 +41,7 @@ const AirportSelect = ({ label, value, onChange, exclude }) => {
               className="w-full text-left px-4 py-2.5 hover:bg-gray-50 flex items-center justify-between"
             >
               <div>
-                <div className="text-[14px] font-semibold text-[#1a1a1a]">{a.city}</div>
+                <div className="text-[14px] font-semibold text-[#0a2240]">{a.city}</div>
                 <div className="text-[12px] text-gray-500">{a.code}</div>
               </div>
               <MapPin size={14} className="text-gray-400" />
@@ -58,10 +58,10 @@ const DatePick = ({ label, value, onChange, fromDate }) => {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <button className="w-full text-left px-4 py-3 border border-gray-300 rounded-md hover:border-[#003366] transition-colors bg-white">
-          <div className="text-[11px] tracking-wider text-gray-500 font-semibold uppercase">{label}</div>
-          <div className="text-[15px] font-semibold text-[#1a1a1a] mt-0.5 flex items-center gap-2">
-            <CalendarIcon size={15} className="text-[#003366]" />
+        <button className="w-full text-left px-4 py-3 border border-gray-300 rounded-sm hover:border-[#0a2240] focus:border-[#0a2240] transition-colors bg-white">
+          <div className="text-[11px] tracking-[0.12em] text-gray-600 font-semibold uppercase">{label}</div>
+          <div className="text-[15px] font-bold text-[#0a2240] mt-0.5 flex items-center gap-2">
+            <CalendarIcon size={15} className="text-[#0a2240]" />
             {value ? format(value, "EEE, MMM d") : "Select date"}
           </div>
         </button>
@@ -80,10 +80,10 @@ const PassengerSelect = ({ passengers, setPassengers }) => {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <button className="w-full text-left px-4 py-3 border border-gray-300 rounded-md hover:border-[#003366] transition-colors bg-white">
-          <div className="text-[11px] tracking-wider text-gray-500 font-semibold uppercase">Passengers</div>
-          <div className="text-[15px] font-semibold text-[#1a1a1a] mt-0.5 flex items-center gap-2">
-            <Users size={15} className="text-[#003366]" /> {total} {total === 1 ? "passenger" : "passengers"}
+        <button className="w-full text-left px-4 py-3 border border-gray-300 rounded-sm hover:border-[#0a2240] transition-colors bg-white">
+          <div className="text-[11px] tracking-[0.12em] text-gray-600 font-semibold uppercase">Passengers</div>
+          <div className="text-[15px] font-bold text-[#0a2240] mt-0.5 flex items-center gap-2">
+            <Users size={15} /> {total} {total === 1 ? "passenger" : "passengers"}
           </div>
         </button>
       </PopoverTrigger>
@@ -95,13 +95,13 @@ const PassengerSelect = ({ passengers, setPassengers }) => {
         ].map((r) => (
           <div key={r.k} className="flex items-center justify-between py-2.5">
             <div>
-              <div className="text-[14px] font-semibold text-[#1a1a1a]">{r.label}</div>
+              <div className="text-[14px] font-semibold text-[#0a2240]">{r.label}</div>
               <div className="text-[12px] text-gray-500">{r.sub}</div>
             </div>
             <div className="flex items-center gap-3">
-              <button onClick={() => update(r.k, -1)} className="w-8 h-8 rounded-full border border-gray-300 text-[#003366] hover:border-[#003366] disabled:opacity-40" disabled={r.k === "adults" ? passengers[r.k] <= 1 : passengers[r.k] <= 0}>−</button>
+              <button onClick={() => update(r.k, -1)} className="w-8 h-8 rounded-full border border-gray-300 text-[#0a2240] hover:border-[#0a2240] disabled:opacity-40" disabled={r.k === "adults" ? passengers[r.k] <= 1 : passengers[r.k] <= 0}>−</button>
               <span className="w-5 text-center text-[14px] font-semibold">{passengers[r.k]}</span>
-              <button onClick={() => update(r.k, 1)} className="w-8 h-8 rounded-full border border-gray-300 text-[#003366] hover:border-[#003366]">+</button>
+              <button onClick={() => update(r.k, 1)} className="w-8 h-8 rounded-full border border-gray-300 text-[#0a2240] hover:border-[#0a2240]">+</button>
             </div>
           </div>
         ))}
@@ -131,8 +131,8 @@ const FlightSearchForm = () => {
             { v: "multi", l: "Multi-City" },
           ].map((o) => (
             <div key={o.v} className="flex items-center gap-2">
-              <RadioGroupItem value={o.v} id={o.v} className="text-[#C8102E] border-gray-400" />
-              <Label htmlFor={o.v} className="text-[14px] font-medium text-[#1a1a1a] cursor-pointer">{o.l}</Label>
+              <RadioGroupItem value={o.v} id={o.v} className="text-[#E31837] border-gray-400" />
+              <Label htmlFor={o.v} className="text-[14px] font-medium text-[#0a2240] cursor-pointer">{o.l}</Label>
             </div>
           ))}
         </RadioGroup>
@@ -148,11 +148,11 @@ const FlightSearchForm = () => {
             <SelectItem value="deltaone">Delta One®</SelectItem>
           </SelectContent>
         </Select>
-        <label className="flex items-center gap-2 text-[13px] text-[#1a1a1a]">
-          <input type="checkbox" className="w-4 h-4 accent-[#C8102E]" /> Shop with Miles
+        <label className="flex items-center gap-2 text-[13px] text-[#0a2240]">
+          <input type="checkbox" className="w-4 h-4 accent-[#E31837]" /> Shop with Miles
         </label>
-        <label className="flex items-center gap-2 text-[13px] text-[#1a1a1a]">
-          <input type="checkbox" className="w-4 h-4 accent-[#C8102E]" /> Refundable Fares
+        <label className="flex items-center gap-2 text-[13px] text-[#0a2240]">
+          <input type="checkbox" className="w-4 h-4 accent-[#E31837]" /> Refundable Fares
         </label>
       </div>
 
@@ -162,7 +162,7 @@ const FlightSearchForm = () => {
         </div>
         <div className="md:col-span-3 relative">
           <AirportSelect label="To" value={to} onChange={setTo} exclude={from?.code} />
-          <button onClick={swap} aria-label="Swap" className="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-gray-300 items-center justify-center text-[#003366] hover:border-[#003366] hover:text-[#C8102E] transition-colors z-10">
+          <button onClick={swap} aria-label="Swap" className="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-gray-300 items-center justify-center text-[#0a2240] hover:border-[#0a2240] hover:text-[#E31837] transition-colors z-10 shadow-sm">
             <ArrowRightLeft size={15} />
           </button>
         </div>
@@ -179,12 +179,12 @@ const FlightSearchForm = () => {
 
       <div className="flex flex-wrap items-center justify-between gap-3 mt-5">
         <div className="flex flex-wrap gap-4 text-[13px]">
-          <button className="text-[#003366] underline hover:text-[#C8102E] transition-colors font-medium">Advanced Search</button>
-          <button className="text-[#003366] underline hover:text-[#C8102E] transition-colors font-medium">Flexible Days</button>
-          <button className="text-[#003366] underline hover:text-[#C8102E] transition-colors font-medium">Best Fares For May</button>
+          <button className="text-[#0a2240] underline hover:text-[#E31837] transition-colors font-semibold">Advanced Search</button>
+          <button className="text-[#0a2240] underline hover:text-[#E31837] transition-colors font-semibold">Flexible Days</button>
+          <button className="text-[#0a2240] underline hover:text-[#E31837] transition-colors font-semibold">Best Fares For Aug</button>
         </div>
-        <Button className="bg-[#C8102E] hover:bg-[#9E0B1F] text-white px-10 h-12 rounded-md text-[15px] font-semibold tracking-wide">
-          <Search size={16} className="mr-2" /> Search
+        <Button className="bg-[#E31837] hover:bg-[#B8132D] text-white px-10 h-12 rounded-sm text-[15px] font-bold tracking-wide">
+          <Search size={16} className="mr-2" /> SEARCH
         </Button>
       </div>
     </div>
@@ -203,27 +203,27 @@ const HeroSearch = () => {
   const current = heroSlides[slide];
 
   return (
-    <section className="relative pt-[108px] md:pt-[108px]">
-      <div className="relative h-[460px] md:h-[520px] overflow-hidden">
+    <section className="relative pt-[100px]">
+      <div className="relative h-[460px] md:h-[540px] overflow-hidden">
         {heroSlides.map((s, i) => (
           <div
             key={s.id}
             className={`absolute inset-0 transition-opacity duration-1000 ${i === slide ? "opacity-100" : "opacity-0"}`}
             style={{ backgroundImage: `url(${s.image})`, backgroundSize: "cover", backgroundPosition: "center" }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a2240]/70 via-[#0a2240]/35 to-transparent" />
           </div>
         ))}
 
         <div className="relative max-w-[1320px] mx-auto px-6 h-full flex items-center">
           <div className="max-w-xl text-white">
-            <div className="text-[12px] tracking-[0.25em] font-semibold mb-3 opacity-90">{current.eyebrow}</div>
-            <h1 className="text-[44px] md:text-[56px] leading-[1.05] font-light mb-4 tracking-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+            <div className="text-[12px] tracking-[0.28em] font-bold mb-3 opacity-95">{current.eyebrow}</div>
+            <h1 className="text-[44px] md:text-[60px] leading-[1.02] font-bold mb-4 tracking-tight">
               {current.title}
             </h1>
             <p className="text-[17px] md:text-[18px] leading-relaxed mb-6 max-w-md opacity-95">{current.subtitle}</p>
-            <button className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#003366] font-semibold text-[14px] rounded-md hover:bg-gray-100 transition-colors">
-              {current.cta}
+            <button className="inline-flex items-center gap-2 px-7 py-3 bg-[#E31837] hover:bg-[#B8132D] text-white font-bold text-[14px] tracking-wide rounded-sm transition-colors">
+              {current.cta.toUpperCase()}
             </button>
           </div>
         </div>
@@ -236,10 +236,11 @@ const HeroSearch = () => {
         </div>
       </div>
 
-      {/* Search widget */}
-      <div className="max-w-[1320px] mx-auto px-6 -mt-16 md:-mt-20 relative z-20">
-        <div className="bg-white rounded-md shadow-2xl border border-gray-200">
-          <div className="flex overflow-x-auto border-b border-gray-200">
+      {/* Search widget with navy header */}
+      <div className="max-w-[1320px] mx-auto px-6 -mt-20 md:-mt-24 relative z-20">
+        <div className="bg-white rounded-sm shadow-2xl overflow-hidden">
+          {/* Navy header with tabs */}
+          <div className="bg-[#0a2240] flex overflow-x-auto">
             {tripTabs.map((t) => {
               const Icon = iconMap[t.icon];
               const active = activeTab === t.id;
@@ -247,10 +248,10 @@ const HeroSearch = () => {
                 <button
                   key={t.id}
                   onClick={() => setActiveTab(t.id)}
-                  className={`flex items-center gap-2 px-6 py-4 text-[14px] font-semibold whitespace-nowrap border-b-[3px] transition-colors ${active ? "border-[#C8102E] text-[#003366]" : "border-transparent text-gray-600 hover:text-[#003366]"}`}
+                  className={`flex items-center gap-2 px-6 py-4 text-[13px] font-bold tracking-wide whitespace-nowrap border-b-[3px] transition-colors ${active ? "border-[#E31837] text-white bg-[#061629]" : "border-transparent text-white/75 hover:text-white"}`}
                 >
                   <Icon size={17} />
-                  {t.label}
+                  {t.label.toUpperCase()}
                 </button>
               );
             })}
@@ -260,9 +261,9 @@ const HeroSearch = () => {
               <FlightSearchForm />
             ) : (
               <div className="py-10 text-center">
-                <div className="text-[18px] font-semibold text-[#003366] mb-2">{tripTabs.find((t) => t.id === activeTab)?.label} search</div>
+                <div className="text-[18px] font-bold text-[#0a2240] mb-2">{tripTabs.find((t) => t.id === activeTab)?.label} search</div>
                 <p className="text-[14px] text-gray-600 mb-5">Plan your perfect trip with our trusted partners.</p>
-                <Button className="bg-[#003366] hover:bg-[#002244] text-white px-8 h-11 rounded-md">Continue to {tripTabs.find((t) => t.id === activeTab)?.label}</Button>
+                <Button className="bg-[#0a2240] hover:bg-[#061629] text-white px-8 h-11 rounded-sm font-bold">Continue to {tripTabs.find((t) => t.id === activeTab)?.label}</Button>
               </div>
             )}
           </div>
